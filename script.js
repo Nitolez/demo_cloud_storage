@@ -1,8 +1,13 @@
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
-
+  apiKey: "AIzaSyC3aIRWvrB-lOrrfIKSNY_MORTWPcweN5o",
+  authDomain: "demofirebase-a0725.firebaseapp.com",
+  projectId: "demofirebase-a0725",
+  storageBucket: "demofirebase-a0725.appspot.com",
+  messagingSenderId: "902020080501",
+  appId: "1:902020080501:web:8ffeead08d2e544e26693c"
 };
-
   
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
@@ -10,10 +15,10 @@ firebase.initializeApp(firebaseConfig);
 function uploadFile() {
 
     // Created a Storage Reference with root dir
-    var storageRef = firebase.storage().ref();
+    var storageRef = firebase.storage().ref();  //REF ES LA RUTA PRINCIPAL
     console.log("storage ref", storageRef);
     // Get the file from DOM
-    var file = document.getElementById("files").files[0];
+    var file = document.getElementById("files").files[0]; //Numero de archivos
     console.log(file);
 
     //dynamically set reference to the file name
@@ -47,10 +52,10 @@ function getAllImages(){
       // Since you mentioned your images are in a folder,
     // we'll create a Reference to that folder:
     //var storageRef = firebase.storage().ref("your_folder");
-    var storageRef = firebase.storage().ref('/images');
+    var storageRef = firebase.storage().ref('/images');  //Cogemos la referencia a la carpeta imagenes
 
     // Now we get the references of these images
-    storageRef.listAll().then(function(result) {
+    storageRef.listAll().then(function(result) { 
       result.items.forEach(function(imageRef) {
         console.log(imageRef);
         // And finally display them
@@ -63,7 +68,7 @@ function getAllImages(){
     });
 
     function displayImage(imageRef) {
-      imageRef.getDownloadURL().then(function(url) {
+      imageRef.getDownloadURL().then(function(url) { //Para cada referencia obtiene la url
         // TODO: Display the image on the UI
         console.log(url);
         const result = document.getElementById("result");
